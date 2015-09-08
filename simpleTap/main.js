@@ -4,11 +4,18 @@
 
 // Search the bookmarks when entering the search keyword.
 $(function() {
-  $('#search').change(function() {
+  $('#search').keyup(function() {
      $('#bookmarks').empty();
-     dumpBookmarks($('#search').val());
+     dumpBookmarks($('#search').val().toUpperCase());
   });
 });
+
+jQuery.expr[":"].Contains = jQuery.expr.createPseudo(function(arg) {
+    return function( elem ) {
+        return jQuery(elem).text().toUpperCase().indexOf(arg.toUpperCase()) >= 0;
+    };
+});
+
 // Traverse the bookmark tree, and print the folder and nodes.
 function dumpBookmarks(query) {
   var bookmarkTreeNodes = chrome.bookmarks.getTree(
