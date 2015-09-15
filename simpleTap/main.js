@@ -46,7 +46,7 @@ function dumpNode(bookmarkNode, query) {
     }
     var anchor = $('<a>');
     anchor.attr('href', bookmarkNode.url);
-    anchor.text(bookmarkNode.title);
+    anchor.text(bookmarkNode.id + ' ' + bookmarkNode.title);
     /*
      * When clicking on a bookmark in the extension, a new tab is fired with
      * the bookmark url.
