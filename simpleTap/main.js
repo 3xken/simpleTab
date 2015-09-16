@@ -11,15 +11,11 @@
 // Search the bookmarks when entering the search keyword.
 $(function() {
   $('#search').keyup(function() {
+    var input = $('#search').val();
      $('#bookmarks').empty();
-     dumpBookmarks($('#search').val().toUpperCase());
+     var bookmarks = dumpBookmarks(input);
+     console.log(input);
   });
-});
-
-jQuery.expr[":"].Contains = jQuery.expr.createPseudo(function(arg) {
-    return function( elem ) {
-        return jQuery(elem).text().toUpperCase().indexOf(arg.toUpperCase()) >= 0;
-    };
 });
 
 // Traverse the bookmark tree, and print the folder and nodes.
@@ -40,7 +36,7 @@ function dumpTreeNodes(bookmarkNodes, query) {
 function dumpNode(bookmarkNode, query) {
   if (bookmarkNode.title) {
     if (query && !bookmarkNode.children) {
-      if (String(bookmarkNode.title).indexOf(query) == -1) {
+      if (String(bookmarkNode.title.toUpperCase()).indexOf(query.toUpperCase()) == -1) {
         return $('<span></span>');
       }
     }
