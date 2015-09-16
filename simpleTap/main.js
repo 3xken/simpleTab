@@ -11,10 +11,10 @@
 // Search the bookmarks when entering the search keyword.
 $(function() {
   $('#search').keyup(function() {
-    var input = $('#search').val();
-     $('#bookmarks').empty();
-     var bookmarks = dumpBookmarks(input);
-     console.log(input);
+    var userSearch = $('#search').val();
+    $('#bookmarks').empty();
+    dumpBookmarks(userSearch);
+    console.log(userSearch);
   });
 });
 
