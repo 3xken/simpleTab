@@ -1,2 +1,2 @@
-# simpleTab
-A simple new tab page for Google Chrome.
+# tabnet
+Access all bookmarks in a new tab.
